@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "default_tier": "standard",
+  "tiers": {
+    "standard": {
+      "approvers": ["manager"],
+      "sla_hours": 24
+    },
+    "high": {
+      "approvers": ["manager", "security"],
+      "sla_hours": 48
+    }
+  },
+  "rules": [
+    {
+      "id": "customer-data",
+      "when": { "field": "touches_customer_data", "op": "equals", "value": true },
+      "set_tier": "high",
+      "reason": "Vendor will touch customer data, so Security must review"
+    }
+  ],
+  "policy_gap_approver": "legal",
+  "named_approvers": {
+    "security": "Sam Lee",
+    "legal": "Rita Okafor",
+    "finance": "Marcus Hale"
+  },
+  "reminders": {
+    "every_hours": 24,
+    "notify_ops_after": 2
+  }
+}

@@ -1,0 +1,16 @@
+From: Priya Shah <priya.shah@acme.example>
+To: vendor-ops@acme.example
+Date: Mon, 5 Oct 2026 09:14:00 -0500
+Subject: Brightline pilot?
+
+Hi Ops,
+
+Could we get Brightline onboarded for a 90-day pilot? Their site is
+https://brightline-analytics.example. We'd sync our product usage events into
+it, tied to customer accounts, so we can see which features drive renewals.
+
+Ideally we'd start on October 19. Dan Ortiz (my manager) is supportive.
+
+Thanks,
+Priya Shah
+RevOps, Acme

@@ -1,0 +1,11 @@
+---
+description: Data boundaries for every agent working in this repo
+alwaysApply: true
+---
+
+- Research uses public web pages only. In the demo, public pages are the saved copies in `fixtures/`.
+- Never log in to a vendor site, submit a vendor form, or contact a vendor.
+- Never write secrets, credentials, personal data, or Acme customer data into any file.
+- All data in this repo is fictional. Do not add real company, customer, or employee data.
+- Every finding in a research pack cites a public https URL. If something can't be verified publicly, write it as an open question, not a guess.
+- Internal Acme material comes only from `policies/`. Do not invent other internal policy.

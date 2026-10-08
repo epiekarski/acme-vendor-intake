@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Vendor pilot request",
+  "description": "The request block of vendors/<slug>.yaml. The five required fields come from Maya's intake brief.",
+  "type": "object",
+  "required": [
+    "legal_name",
+    "website",
+    "touches_customer_data",
+    "business_owner",
+    "target_start_date"
+  ],
+  "properties": {
+    "legal_name": { "type": "string", "description": "Vendor's legal entity name" },
+    "website": { "type": "string", "format": "uri", "description": "Vendor's public website" },
+    "touches_customer_data": { "type": "boolean", "description": "Will the vendor touch Acme customer data?" },
+    "business_owner": { "type": "string", "description": "Acme person accountable for the pilot" },
+    "target_start_date": { "type": "string", "format": "date", "description": "YYYY-MM-DD" },
+    "pilot_days": { "type": "integer", "default": 90 },
+    "requester": { "type": "string" },
+    "requester_manager": { "type": "string", "description": "Approves as the 'manager' role" },
+    "source": { "type": "string", "description": "Where the request came from, e.g. an email thread" }
+  }
+}

@@ -1,0 +1,22 @@
+---
+description: How vendor pilot policy works; use when triaging vendors, changing approval rules, or editing policies/
+globs: vendors/**, packs/**, policies/**, intake/policy.py
+alwaysApply: false
+---
+
+The policy data lives in @policies/tiers.json. This rule explains it; it does not repeat it.
+
+How decisions are made:
+- Tier, approvers, and SLA come only from `python -m intake triage <slug>`. Never decide them by reading the policy and judging.
+- Whether a research pack is complete comes only from `python -m intake pack-check <slug>`.
+- Approvals come only from a named person, recorded with `python -m intake decide`. An agent never approves and never edits the `approvals` block of a vendor file.
+
+How `tiers.json` works:
+- `tiers`: each tier's approvers (in the order they're asked) and SLA in hours.
+- `rules`: each has an `id`, a `when` (`field`, `op`, `value`), and either `set_tier` or `add_approvers`, plus a human-readable `reason`. Ops: equals, not_equals, gt, gte, lt, lte. Fields are the request fields in @schema/vendor.schema.json.
+- A policy gap in the research pack adds `policy_gap_approver` (Legal).
+
+Changing policy:
+- Add or edit a rule in `tiers.json`; don't change Python for a new rule.
+- Every rule change needs a test in `tests/test_policy.py` with a sample vendor that triggers it and one that doesn't.
+- Run `make test` before proposing the change.
