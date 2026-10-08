@@ -21,4 +21,5 @@ Grok Bot is the front door; this repo decides. All data here is fictional.
 ## Commands
 
 - `make test`: run before proposing any change.
+- `make seed`: load three fictional sample requests (incomplete, overdue, approved) when asked to load sample or demo requests. `make clean` removes all records.
 - `python -m intake status`: every request; `--waiting-on "<name or role>"`, `--overdue`, `--customer-data` to filter.

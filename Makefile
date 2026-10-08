@@ -1,6 +1,6 @@
 PYTHON ?= python3
 
-.PHONY: setup test demo status clean
+.PHONY: setup test demo seed status clean
 
 setup:
 	$(PYTHON) -m pip install -r requirements.txt
@@ -10,6 +10,10 @@ test:
 
 demo:
 	$(PYTHON) -m intake.demo
+
+# Load three sample requests (incomplete, overdue, approved) for status demos
+seed:
+	$(PYTHON) -m intake.seed
 
 status:
 	$(PYTHON) -m intake status
