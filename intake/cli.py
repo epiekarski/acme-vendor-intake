@@ -72,7 +72,7 @@ def describe(record: dict) -> str:
         for prob in p["problems"]:
             lines.append(f"    - {prob}")
         if p["policy_gaps"]:
-            lines.append(f"  Policy gaps (Legal reviews): {', '.join(p['policy_gaps'])}")
+            lines.append(f"  Policy gaps (flagged for approvers): {', '.join(p['policy_gaps'])}")
     for a in record.get("approvals", []):
         lines.append(f"  {a['role']}: {a['decision']} by {a['name']} at {a['at']}")
     nxt = wf.next_approver(record)

@@ -16,7 +16,7 @@ description: Build and check a vendor research pack from public sources, includi
    - Sources: every URL you used.
 3. Check it: `python .cursor/skills/research-pack/scripts/check_pack.py check <slug>`.
 4. Fix every problem it lists, then check again. A complete pack moves the request to `pending_approval`.
-5. Report problems and policy gaps exactly as printed. Policy gaps add Legal as a reviewer automatically.
+5. Report problems and policy gaps exactly as printed. Policy gaps are flagged for the approvers; they don't add a reviewer.
 
 ## Rules
 

@@ -53,10 +53,11 @@ class TestFullFlow(ScratchCase):
         wf.start_pack(SLUG)
         self.assertEqual(wf.run_pack_check(SLUG)["status"], "researching")
 
-    def test_policy_gaps_add_legal(self):
+    def test_policy_gaps_flagged_without_extra_approver(self):
         record = self.submit_and_research()
         self.assertEqual(record["status"], "pending_approval")
-        self.assertEqual(record["triage"]["approvers"], ["manager", "security", "legal"])
+        self.assertTrue(record["pack"]["policy_gaps"])
+        self.assertEqual(record["triage"]["approvers"], ["manager", "security"])
 
     def test_approvals_in_order_then_approved(self):
         self.submit_and_research()
@@ -65,11 +66,10 @@ class TestFullFlow(ScratchCase):
         self.at("2026-10-07T16:00:00+00:00")
         wf.record_decision(SLUG, "manager", "Dan Ortiz", "approved")
         self.assertEqual(wf.next_approver(load_vendor(SLUG)), "security")
-        wf.record_decision(SLUG, "security", "Sam Lee", "approved")
-        record = wf.record_decision(SLUG, "legal", "Rita Okafor", "approved")
+        record = wf.record_decision(SLUG, "security", "Sam Lee", "approved")
         self.assertEqual(record["status"], "approved")
         humans = [s for s in record["log"] if s["actor"] == "human"]
-        self.assertEqual([s["by"] for s in humans], ["Priya Shah", "Dan Ortiz", "Sam Lee", "Rita Okafor"])
+        self.assertEqual([s["by"] for s in humans], ["Priya Shah", "Dan Ortiz", "Sam Lee"])
 
     def test_rejection_ends_request(self):
         self.submit_and_research()
@@ -93,8 +93,7 @@ class TestFullFlow(ScratchCase):
         self.at("2026-10-10T00:00:00+00:00")  # past the 48h SLA
         self.assertTrue(wf.is_overdue(load_vendor(SLUG)))
         wf.record_decision(SLUG, "manager", "Dan Ortiz", "approved")
-        wf.record_decision(SLUG, "security", "Sam Lee", "approved")
-        record = wf.record_decision(SLUG, "legal", "Rita Okafor", "approved")
+        record = wf.record_decision(SLUG, "security", "Sam Lee", "approved")
         self.assertFalse(wf.is_overdue(record))
         m = wf.metrics([record])
         self.assertEqual(m["decided"], 1)

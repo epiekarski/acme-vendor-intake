@@ -14,7 +14,7 @@ How decisions are made:
 How `tiers.json` works:
 - `tiers`: each tier's approvers (in the order they're asked) and SLA in hours.
 - `rules`: each has an `id`, a `when` (`field`, `op`, `value`), and either `set_tier` or `add_approvers`, plus a human-readable `reason`. Ops: equals, not_equals, gt, gte, lt, lte. Fields are the request fields in @schema/vendor.schema.json.
-- A policy gap in the research pack adds `policy_gap_approver` (Legal).
+- Policy gaps in the research pack are flagged for the approvers to weigh; they don't add an approver.
 
 Changing policy:
 - Add or edit a rule in `tiers.json`; don't change Python for a new rule.

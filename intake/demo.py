@@ -62,10 +62,6 @@ def run() -> None:
              ["decide", "brightline-analytics", "--role", "security", "--name", "Sam Lee",
               "--decision", "approved", "--note", "OK for pilot; no production PII beyond account IDs"],
              "2026-10-08T10:00:00+00:00")
-        step("4. Approval: Rita Okafor (Legal, added for policy gaps)",
-             ["decide", "brightline-analytics", "--role", "legal", "--name", "Rita Okafor",
-              "--decision", "approved", "--note", "Pilot OK; 72h breach notice required before full contract"],
-             "2026-10-08T11:30:00+00:00")
         step("5. Status: final", ["status", "brightline-analytics"], "2026-10-08T11:31:00+00:00")
         step("Metrics", ["metrics"], "2026-10-08T11:32:00+00:00")
     finally:

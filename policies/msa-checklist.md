@@ -2,7 +2,7 @@
 
 Every research pack must assess each item below in its **Policy check** table,
 using only public information. Mark each item `met`, `gap`, or `unknown`.
-Any `gap` or `unknown` is a policy gap: Legal is added as a reviewer.
+Any `gap` or `unknown` is a policy gap, flagged for the approvers.
 
 | ID | Item | What "met" looks like |
 | --- | --- | --- |

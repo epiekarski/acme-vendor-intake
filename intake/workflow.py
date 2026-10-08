@@ -140,35 +140,19 @@ def run_pack_check(slug: str) -> dict:
     result = packmod.check_pack(path.read_text(encoding="utf-8"))
     record["pack"] = {"path": f"packs/{slug}.md", "checked_at": iso(now()), **result}
 
-    policy = pol.load_policy()
-    gap_role = policy.get("policy_gap_approver", "legal")
-    approvers = record["triage"]["approvers"]
     # Policy gaps only count once the pack is complete; a half-filled pack
-    # would otherwise flag every item as unknown.
+    # would otherwise flag every item as unknown. Gaps are flagged for the
+    # approvers to weigh; they don't add an approver.
     gaps = result["policy_gaps"] if result["complete"] else []
     record["pack"]["policy_gaps"] = gaps
-    if gaps and gap_role not in approvers:
-        approvers.append(gap_role)
-    if not gaps and gap_role in approvers and gap_role not in _rule_roles(record):
-        approvers.remove(gap_role)
 
     record["status"] = "pending_approval" if result["complete"] else "researching"
     summary = "complete" if result["complete"] else f"{len(result['problems'])} problem(s)"
     if gaps:
-        summary += f"; policy gaps {gaps} -> {gap_role} added"
+        summary += f"; policy gaps flagged for approvers: {gaps}"
     log_step(record, "pack-check", "bot", BOT, f"Pack {summary}")
     save_vendor(record)
     return record
-
-
-def _rule_roles(record: dict) -> set[str]:
-    policy = pol.load_policy()
-    tier_roles = set(policy["tiers"][record["triage"]["tier"]]["approvers"])
-    fired = {r["rule"] for r in record["triage"]["reasons"]}
-    for rule in policy.get("rules", []):
-        if rule["id"] in fired:
-            tier_roles.update(rule.get("add_approvers", []))
-    return tier_roles
 
 
 # 4. Approval ---------------------------------------------------------------
