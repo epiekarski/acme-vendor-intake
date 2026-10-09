@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-09T03:17:11Z",
+  "generated_at": "2026-10-09T03:29:01Z",
   "required_fields": [
     "Legal name",
     "Website",
@@ -15,15 +15,15 @@
     "Done"
   ],
   "summary": {
-    "open": 3,
-    "waiting_on_person": 3,
+    "open": 2,
+    "waiting_on_person": 2,
     "overdue": 1,
     "incomplete": 1,
     "approved": 1,
     "rejected": 0
   },
   "metrics": {
-    "requests": 4,
+    "requests": 3,
     "decided": 1,
     "median_cycle_hours": 24.0,
     "exception_rate": 0.0
@@ -68,14 +68,14 @@
           "step": "intake",
           "actor": "bot",
           "by": "Vendor Intake Bot",
-          "at": "2026-10-07T02:11:11Z",
+          "at": "2026-10-07T03:29:01Z",
           "detail": "Drafted request from ticket from Lee Park",
           "label": "Request drafted"
         }
       ],
       "submitted_at": null,
       "decided_at": null,
-      "updated_at": "2026-10-07T02:11:11Z"
+      "updated_at": "2026-10-07T03:29:01Z"
     },
     {
       "id": "quillbase",
@@ -98,11 +98,11 @@
         "role": "manager",
         "name": "Dan Ortiz"
       },
-      "due": "2026-10-08T20:11:11Z",
+      "due": "2026-10-08T21:29:01Z",
       "overdue": true,
       "blocker": {
         "kind": "overdue",
-        "text": "Overdue 7h: waiting on Dan Ortiz"
+        "text": "Overdue 6h: waiting on Dan Ortiz"
       },
       "fields": {
         "Legal name": "Quillbase, Inc.",
@@ -118,7 +118,7 @@
       "missing_fields": [],
       "pack": {
         "complete": true,
-        "checked_at": "2026-10-07T21:11:11Z",
+        "checked_at": "2026-10-07T22:29:01Z",
         "problems": [],
         "policy_gaps": []
       },
@@ -128,7 +128,7 @@
           "step": "intake",
           "actor": "bot",
           "by": "Vendor Intake Bot",
-          "at": "2026-10-07T20:11:11Z",
+          "at": "2026-10-07T21:29:01Z",
           "detail": "Drafted request from email from Marco Diaz",
           "label": "Request drafted"
         },
@@ -136,7 +136,7 @@
           "step": "intake-confirmed",
           "actor": "human",
           "by": "Marco Diaz",
-          "at": "2026-10-07T20:11:11Z",
+          "at": "2026-10-07T21:29:01Z",
           "detail": "Requester confirmed the request",
           "label": "Requester confirmed"
         },
@@ -144,7 +144,7 @@
           "step": "triage",
           "actor": "bot",
           "by": "Vendor Intake Bot",
-          "at": "2026-10-07T20:11:11Z",
+          "at": "2026-10-07T21:29:01Z",
           "detail": "Tier standard via default; approvers manager",
           "label": "Triage: route set"
         },
@@ -152,129 +152,14 @@
           "step": "pack-check",
           "actor": "bot",
           "by": "Vendor Intake Bot",
-          "at": "2026-10-07T21:11:11Z",
+          "at": "2026-10-07T22:29:01Z",
           "detail": "Pack complete",
           "label": "Research pack checked"
         }
       ],
-      "submitted_at": "2026-10-07T20:11:11Z",
+      "submitted_at": "2026-10-07T21:29:01Z",
       "decided_at": null,
-      "updated_at": "2026-10-07T21:11:11Z"
-    },
-    {
-      "id": "brightline-analytics",
-      "vendor": "Brightline Analytics, Inc.",
-      "website": "https://brightline-analytics.example",
-      "requester": "Priya Shah",
-      "status": "pending_approval",
-      "status_label": "Awaiting approval",
-      "stage": 3,
-      "tier": "high",
-      "tier_reason": "Vendor will touch customer data, so Security must review",
-      "approvers": [
-        {
-          "role": "manager",
-          "name": "Dan Ortiz",
-          "state": "approved"
-        },
-        {
-          "role": "security",
-          "name": "Sam Lee",
-          "state": "waiting"
-        }
-      ],
-      "waiting_on": {
-        "role": "security",
-        "name": "Sam Lee"
-      },
-      "due": "2026-10-11T03:12:12Z",
-      "overdue": false,
-      "blocker": null,
-      "fields": {
-        "Legal name": "Brightline Analytics, Inc.",
-        "Website": "https://brightline-analytics.example",
-        "Touches customer data": "Yes",
-        "Business owner": "Priya Shah",
-        "Target start": "2026-10-19",
-        "Pilot length": "90 days",
-        "Requester": "Priya Shah",
-        "Requester's manager": "Dan Ortiz",
-        "Source": "email from Priya Shah on 2026-10-05"
-      },
-      "missing_fields": [],
-      "pack": {
-        "complete": true,
-        "checked_at": "2026-10-09T03:12:33Z",
-        "problems": [],
-        "policy_gaps": [
-          "Sub-processor list",
-          "Breach notification",
-          "Data residency",
-          "Liability cap"
-        ]
-      },
-      "approvals": [
-        {
-          "role": "manager",
-          "name": "Dan Ortiz",
-          "decision": "approved",
-          "at": "2026-10-09T03:17:11Z",
-          "note": "Approved in chat"
-        }
-      ],
-      "log": [
-        {
-          "step": "intake",
-          "actor": "bot",
-          "by": "Vendor Intake Bot",
-          "at": "2026-10-09T03:12:12Z",
-          "detail": "Drafted request from email from Priya Shah on 2026-10-05",
-          "label": "Request drafted"
-        },
-        {
-          "step": "intake-confirmed",
-          "actor": "human",
-          "by": "Priya Shah",
-          "at": "2026-10-09T03:12:12Z",
-          "detail": "Requester confirmed the request",
-          "label": "Requester confirmed"
-        },
-        {
-          "step": "triage",
-          "actor": "bot",
-          "by": "Vendor Intake Bot",
-          "at": "2026-10-09T03:12:12Z",
-          "detail": "Tier high via customer-data; approvers manager, security",
-          "label": "Triage: route set"
-        },
-        {
-          "step": "pack-check",
-          "actor": "bot",
-          "by": "Vendor Intake Bot",
-          "at": "2026-10-09T03:12:31Z",
-          "detail": "Pack 1 problem(s)",
-          "label": "Research pack checked"
-        },
-        {
-          "step": "pack-check",
-          "actor": "bot",
-          "by": "Vendor Intake Bot",
-          "at": "2026-10-09T03:12:33Z",
-          "detail": "Pack complete; policy gaps flagged for approvers: subprocessors, breach-notice, residency, liability",
-          "label": "Research pack checked"
-        },
-        {
-          "step": "approval-manager",
-          "actor": "human",
-          "by": "Dan Ortiz",
-          "at": "2026-10-09T03:17:11Z",
-          "detail": "approved: Approved in chat",
-          "label": "Manager decision"
-        }
-      ],
-      "submitted_at": "2026-10-09T03:12:12Z",
-      "decided_at": null,
-      "updated_at": "2026-10-09T03:17:11Z"
+      "updated_at": "2026-10-07T22:29:01Z"
     },
     {
       "id": "harbor-signal",
@@ -316,7 +201,7 @@
       "missing_fields": [],
       "pack": {
         "complete": true,
-        "checked_at": "2026-10-05T03:11:11Z",
+        "checked_at": "2026-10-05T04:29:01Z",
         "problems": [],
         "policy_gaps": []
       },
@@ -325,14 +210,14 @@
           "role": "manager",
           "name": "Dan Ortiz",
           "decision": "approved",
-          "at": "2026-10-05T08:11:11Z",
+          "at": "2026-10-05T09:29:01Z",
           "note": ""
         },
         {
           "role": "security",
           "name": "Sam Lee",
           "decision": "approved",
-          "at": "2026-10-06T02:11:11Z",
+          "at": "2026-10-06T03:29:01Z",
           "note": "Account IDs only"
         }
       ],
@@ -341,7 +226,7 @@
           "step": "intake",
           "actor": "bot",
           "by": "Vendor Intake Bot",
-          "at": "2026-10-05T02:11:11Z",
+          "at": "2026-10-05T03:29:01Z",
           "detail": "Drafted request from email from Priya Shah",
           "label": "Request drafted"
         },
@@ -349,7 +234,7 @@
           "step": "intake-confirmed",
           "actor": "human",
           "by": "Priya Shah",
-          "at": "2026-10-05T02:11:11Z",
+          "at": "2026-10-05T03:29:01Z",
           "detail": "Requester confirmed the request",
           "label": "Requester confirmed"
         },
@@ -357,7 +242,7 @@
           "step": "triage",
           "actor": "bot",
           "by": "Vendor Intake Bot",
-          "at": "2026-10-05T02:11:11Z",
+          "at": "2026-10-05T03:29:01Z",
           "detail": "Tier high via customer-data; approvers manager, security",
           "label": "Triage: route set"
         },
@@ -365,7 +250,7 @@
           "step": "pack-check",
           "actor": "bot",
           "by": "Vendor Intake Bot",
-          "at": "2026-10-05T03:11:11Z",
+          "at": "2026-10-05T04:29:01Z",
           "detail": "Pack complete",
           "label": "Research pack checked"
         },
@@ -373,7 +258,7 @@
           "step": "approval-manager",
           "actor": "human",
           "by": "Dan Ortiz",
-          "at": "2026-10-05T08:11:11Z",
+          "at": "2026-10-05T09:29:01Z",
           "detail": "approved",
           "label": "Manager decision"
         },
@@ -381,14 +266,14 @@
           "step": "approval-security",
           "actor": "human",
           "by": "Sam Lee",
-          "at": "2026-10-06T02:11:11Z",
+          "at": "2026-10-06T03:29:01Z",
           "detail": "approved: Account IDs only",
           "label": "Security decision"
         }
       ],
-      "submitted_at": "2026-10-05T02:11:11Z",
-      "decided_at": "2026-10-06T02:11:11Z",
-      "updated_at": "2026-10-06T02:11:11Z"
+      "submitted_at": "2026-10-05T03:29:01Z",
+      "decided_at": "2026-10-06T03:29:01Z",
+      "updated_at": "2026-10-06T03:29:01Z"
     }
   ]
 }
