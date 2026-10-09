@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-09T14:33:47Z",
+  "generated_at": "2026-10-09T14:33:50Z",
   "required_fields": [
     "Legal name",
     "Website",
@@ -166,14 +166,25 @@
       "vendor": "Brightline Analytics, Inc.",
       "website": "https://brightline-analytics.example",
       "requester": "Priya Shah",
-      "status": "submitted",
-      "status_label": "Submitted",
-      "stage": 1,
-      "tier": null,
-      "tier_reason": null,
-      "approvers": [],
+      "status": "researching",
+      "status_label": "Researching",
+      "stage": 2,
+      "tier": "high",
+      "tier_reason": "Vendor will touch customer data, so Security must review",
+      "approvers": [
+        {
+          "role": "manager",
+          "name": "Dan Ortiz",
+          "state": "pending"
+        },
+        {
+          "role": "security",
+          "name": "Sam Lee",
+          "state": "pending"
+        }
+      ],
       "waiting_on": null,
-      "due": null,
+      "due": "2026-10-11T14:33:47Z",
       "overdue": false,
       "blocker": null,
       "fields": {
@@ -206,11 +217,19 @@
           "at": "2026-10-09T14:33:47Z",
           "detail": "Requester confirmed the request",
           "label": "Requester confirmed"
+        },
+        {
+          "step": "triage",
+          "actor": "bot",
+          "by": "Vendor Intake Bot",
+          "at": "2026-10-09T14:33:50Z",
+          "detail": "Tier high via customer-data; approvers manager, security",
+          "label": "Triage: route set"
         }
       ],
       "submitted_at": "2026-10-09T14:33:47Z",
       "decided_at": null,
-      "updated_at": "2026-10-09T14:33:47Z"
+      "updated_at": "2026-10-09T14:33:50Z"
     },
     {
       "id": "harbor-signal",
