@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-09T13:51:43Z",
+  "generated_at": "2026-10-09T13:52:06Z",
   "required_fields": [
     "Legal name",
     "Website",
@@ -16,7 +16,7 @@
   ],
   "summary": {
     "open": 3,
-    "waiting_on_person": 2,
+    "waiting_on_person": 3,
     "overdue": 1,
     "incomplete": 1,
     "approved": 1,
@@ -166,16 +166,16 @@
       "vendor": "Brightline Analytics, Inc.",
       "website": "https://brightline-analytics.example",
       "requester": "Priya Shah",
-      "status": "researching",
-      "status_label": "Researching",
-      "stage": 2,
+      "status": "pending_approval",
+      "status_label": "Awaiting approval",
+      "stage": 3,
       "tier": "high",
       "tier_reason": "Vendor will touch customer data, so Security must review",
       "approvers": [
         {
           "role": "manager",
           "name": "Dan Ortiz",
-          "state": "pending"
+          "state": "waiting"
         },
         {
           "role": "security",
@@ -183,7 +183,10 @@
           "state": "pending"
         }
       ],
-      "waiting_on": null,
+      "waiting_on": {
+        "role": "manager",
+        "name": "Dan Ortiz"
+      },
       "due": "2026-10-11T13:51:42Z",
       "overdue": false,
       "blocker": null,
@@ -199,7 +202,17 @@
         "Source": "email from Priya Shah on 2026-10-05"
       },
       "missing_fields": [],
-      "pack": null,
+      "pack": {
+        "complete": true,
+        "checked_at": "2026-10-09T13:52:06Z",
+        "problems": [],
+        "policy_gaps": [
+          "Sub-processor list",
+          "Breach notification",
+          "Data residency",
+          "Liability cap"
+        ]
+      },
       "approvals": [],
       "log": [
         {
@@ -225,11 +238,19 @@
           "at": "2026-10-09T13:51:43Z",
           "detail": "Tier high via customer-data; approvers manager, security",
           "label": "Triage: route set"
+        },
+        {
+          "step": "pack-check",
+          "actor": "bot",
+          "by": "Vendor Intake Bot",
+          "at": "2026-10-09T13:52:06Z",
+          "detail": "Pack complete; policy gaps flagged for approvers: subprocessors, breach-notice, residency, liability",
+          "label": "Research pack checked"
         }
       ],
       "submitted_at": "2026-10-09T13:51:42Z",
       "decided_at": null,
-      "updated_at": "2026-10-09T13:51:43Z"
+      "updated_at": "2026-10-09T13:52:06Z"
     },
     {
       "id": "harbor-signal",
