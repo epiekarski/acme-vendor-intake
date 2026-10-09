@@ -1,0 +1,279 @@
+{
+  "generated_at": "2026-10-09T02:13:26Z",
+  "required_fields": [
+    "Legal name",
+    "Website",
+    "Touches customer data",
+    "Business owner",
+    "Target start date"
+  ],
+  "stages": [
+    "Intake",
+    "Triage",
+    "Research",
+    "Approval",
+    "Done"
+  ],
+  "summary": {
+    "open": 2,
+    "waiting_on_person": 2,
+    "overdue": 1,
+    "incomplete": 1,
+    "approved": 1,
+    "rejected": 0
+  },
+  "metrics": {
+    "requests": 3,
+    "decided": 1,
+    "median_cycle_hours": 24.0,
+    "exception_rate": 0.0
+  },
+  "requests": [
+    {
+      "id": "northwind-notes",
+      "vendor": "Northwind Notes, Inc.",
+      "website": "https://northwind-notes.example",
+      "requester": "Lee Park",
+      "status": "incomplete",
+      "status_label": "Incomplete",
+      "stage": 0,
+      "tier": null,
+      "tier_reason": null,
+      "approvers": [],
+      "waiting_on": null,
+      "due": null,
+      "overdue": false,
+      "blocker": {
+        "kind": "missing",
+        "text": "Missing: business owner"
+      },
+      "fields": {
+        "Legal name": "Northwind Notes, Inc.",
+        "Website": "https://northwind-notes.example",
+        "Touches customer data": "No",
+        "Business owner": null,
+        "Target start": "2026-11-02",
+        "Pilot length": "90 days",
+        "Requester": "Lee Park",
+        "Requester's manager": "Ana Cruz",
+        "Source": "ticket from Lee Park"
+      },
+      "missing_fields": [
+        "Business owner"
+      ],
+      "pack": null,
+      "approvals": [],
+      "log": [
+        {
+          "step": "intake",
+          "actor": "bot",
+          "by": "Vendor Intake Bot",
+          "at": "2026-10-07T02:13:26Z",
+          "detail": "Drafted request from ticket from Lee Park",
+          "label": "Request drafted"
+        }
+      ],
+      "submitted_at": null,
+      "decided_at": null,
+      "updated_at": "2026-10-07T02:13:26Z"
+    },
+    {
+      "id": "quillbase",
+      "vendor": "Quillbase, Inc.",
+      "website": "https://quillbase.example",
+      "requester": "Marco Diaz",
+      "status": "pending_approval",
+      "status_label": "Awaiting approval",
+      "stage": 3,
+      "tier": "standard",
+      "tier_reason": "No rule matched; default tier 'standard'",
+      "approvers": [
+        {
+          "role": "manager",
+          "name": "Dan Ortiz",
+          "state": "waiting"
+        }
+      ],
+      "waiting_on": {
+        "role": "manager",
+        "name": "Dan Ortiz"
+      },
+      "due": "2026-10-08T20:13:26Z",
+      "overdue": true,
+      "blocker": {
+        "kind": "overdue",
+        "text": "Overdue 6h: waiting on Dan Ortiz"
+      },
+      "fields": {
+        "Legal name": "Quillbase, Inc.",
+        "Website": "https://quillbase.example",
+        "Touches customer data": "No",
+        "Business owner": "Marco Diaz",
+        "Target start": "2026-10-26",
+        "Pilot length": "90 days",
+        "Requester": "Marco Diaz",
+        "Requester's manager": "Dan Ortiz",
+        "Source": "email from Marco Diaz"
+      },
+      "missing_fields": [],
+      "pack": {
+        "complete": true,
+        "checked_at": "2026-10-07T21:13:26Z",
+        "problems": [],
+        "policy_gaps": []
+      },
+      "approvals": [],
+      "log": [
+        {
+          "step": "intake",
+          "actor": "bot",
+          "by": "Vendor Intake Bot",
+          "at": "2026-10-07T20:13:26Z",
+          "detail": "Drafted request from email from Marco Diaz",
+          "label": "Request drafted"
+        },
+        {
+          "step": "intake-confirmed",
+          "actor": "human",
+          "by": "Marco Diaz",
+          "at": "2026-10-07T20:13:26Z",
+          "detail": "Requester confirmed the request",
+          "label": "Requester confirmed"
+        },
+        {
+          "step": "triage",
+          "actor": "bot",
+          "by": "Vendor Intake Bot",
+          "at": "2026-10-07T20:13:26Z",
+          "detail": "Tier standard via default; approvers manager",
+          "label": "Triage: route set"
+        },
+        {
+          "step": "pack-check",
+          "actor": "bot",
+          "by": "Vendor Intake Bot",
+          "at": "2026-10-07T21:13:26Z",
+          "detail": "Pack complete",
+          "label": "Research pack checked"
+        }
+      ],
+      "submitted_at": "2026-10-07T20:13:26Z",
+      "decided_at": null,
+      "updated_at": "2026-10-07T21:13:26Z"
+    },
+    {
+      "id": "harbor-signal",
+      "vendor": "Harbor Signal, Inc.",
+      "website": "https://harbor-signal.example",
+      "requester": "Priya Shah",
+      "status": "approved",
+      "status_label": "Approved",
+      "stage": 4,
+      "tier": "high",
+      "tier_reason": "Vendor will touch customer data, so Security must review",
+      "approvers": [
+        {
+          "role": "manager",
+          "name": "Dan Ortiz",
+          "state": "approved"
+        },
+        {
+          "role": "security",
+          "name": "Sam Lee",
+          "state": "approved"
+        }
+      ],
+      "waiting_on": null,
+      "due": null,
+      "overdue": false,
+      "blocker": null,
+      "fields": {
+        "Legal name": "Harbor Signal, Inc.",
+        "Website": "https://harbor-signal.example",
+        "Touches customer data": "Yes",
+        "Business owner": "Priya Shah",
+        "Target start": "2026-10-12",
+        "Pilot length": "90 days",
+        "Requester": "Priya Shah",
+        "Requester's manager": "Dan Ortiz",
+        "Source": "email from Priya Shah"
+      },
+      "missing_fields": [],
+      "pack": {
+        "complete": true,
+        "checked_at": "2026-10-05T03:13:26Z",
+        "problems": [],
+        "policy_gaps": []
+      },
+      "approvals": [
+        {
+          "role": "manager",
+          "name": "Dan Ortiz",
+          "decision": "approved",
+          "at": "2026-10-05T08:13:26Z",
+          "note": ""
+        },
+        {
+          "role": "security",
+          "name": "Sam Lee",
+          "decision": "approved",
+          "at": "2026-10-06T02:13:26Z",
+          "note": "Account IDs only"
+        }
+      ],
+      "log": [
+        {
+          "step": "intake",
+          "actor": "bot",
+          "by": "Vendor Intake Bot",
+          "at": "2026-10-05T02:13:26Z",
+          "detail": "Drafted request from email from Priya Shah",
+          "label": "Request drafted"
+        },
+        {
+          "step": "intake-confirmed",
+          "actor": "human",
+          "by": "Priya Shah",
+          "at": "2026-10-05T02:13:26Z",
+          "detail": "Requester confirmed the request",
+          "label": "Requester confirmed"
+        },
+        {
+          "step": "triage",
+          "actor": "bot",
+          "by": "Vendor Intake Bot",
+          "at": "2026-10-05T02:13:26Z",
+          "detail": "Tier high via customer-data; approvers manager, security",
+          "label": "Triage: route set"
+        },
+        {
+          "step": "pack-check",
+          "actor": "bot",
+          "by": "Vendor Intake Bot",
+          "at": "2026-10-05T03:13:26Z",
+          "detail": "Pack complete",
+          "label": "Research pack checked"
+        },
+        {
+          "step": "approval-manager",
+          "actor": "human",
+          "by": "Dan Ortiz",
+          "at": "2026-10-05T08:13:26Z",
+          "detail": "approved",
+          "label": "Manager decision"
+        },
+        {
+          "step": "approval-security",
+          "actor": "human",
+          "by": "Sam Lee",
+          "at": "2026-10-06T02:13:26Z",
+          "detail": "approved: Account IDs only",
+          "label": "Security decision"
+        }
+      ],
+      "submitted_at": "2026-10-05T02:13:26Z",
+      "decided_at": "2026-10-06T02:13:26Z",
+      "updated_at": "2026-10-06T02:13:26Z"
+    }
+  ]
+}
