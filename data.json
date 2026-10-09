@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-09T13:52:06Z",
+  "generated_at": "2026-10-09T13:55:44Z",
   "required_fields": [
     "Legal name",
     "Website",
@@ -175,17 +175,17 @@
         {
           "role": "manager",
           "name": "Dan Ortiz",
-          "state": "waiting"
+          "state": "approved"
         },
         {
           "role": "security",
           "name": "Sam Lee",
-          "state": "pending"
+          "state": "waiting"
         }
       ],
       "waiting_on": {
-        "role": "manager",
-        "name": "Dan Ortiz"
+        "role": "security",
+        "name": "Sam Lee"
       },
       "due": "2026-10-11T13:51:42Z",
       "overdue": false,
@@ -213,7 +213,15 @@
           "Liability cap"
         ]
       },
-      "approvals": [],
+      "approvals": [
+        {
+          "role": "manager",
+          "name": "Dan Ortiz",
+          "decision": "approved",
+          "at": "2026-10-09T13:55:44Z",
+          "note": "Approved in chat"
+        }
+      ],
       "log": [
         {
           "step": "intake",
@@ -246,11 +254,19 @@
           "at": "2026-10-09T13:52:06Z",
           "detail": "Pack complete; policy gaps flagged for approvers: subprocessors, breach-notice, residency, liability",
           "label": "Research pack checked"
+        },
+        {
+          "step": "approval-manager",
+          "actor": "human",
+          "by": "Dan Ortiz",
+          "at": "2026-10-09T13:55:44Z",
+          "detail": "approved: Approved in chat",
+          "label": "Manager decision"
         }
       ],
       "submitted_at": "2026-10-09T13:51:42Z",
       "decided_at": null,
-      "updated_at": "2026-10-09T13:52:06Z"
+      "updated_at": "2026-10-09T13:55:44Z"
     },
     {
       "id": "harbor-signal",
