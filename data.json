@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-09T03:29:01Z",
+  "generated_at": "2026-10-09T13:51:42Z",
   "required_fields": [
     "Legal name",
     "Website",
@@ -15,7 +15,7 @@
     "Done"
   ],
   "summary": {
-    "open": 2,
+    "open": 3,
     "waiting_on_person": 2,
     "overdue": 1,
     "incomplete": 1,
@@ -23,7 +23,7 @@
     "rejected": 0
   },
   "metrics": {
-    "requests": 3,
+    "requests": 4,
     "decided": 1,
     "median_cycle_hours": 24.0,
     "exception_rate": 0.0
@@ -102,7 +102,7 @@
       "overdue": true,
       "blocker": {
         "kind": "overdue",
-        "text": "Overdue 6h: waiting on Dan Ortiz"
+        "text": "Overdue 16h: waiting on Dan Ortiz"
       },
       "fields": {
         "Legal name": "Quillbase, Inc.",
@@ -160,6 +160,57 @@
       "submitted_at": "2026-10-07T21:29:01Z",
       "decided_at": null,
       "updated_at": "2026-10-07T22:29:01Z"
+    },
+    {
+      "id": "brightline-analytics",
+      "vendor": "Brightline Analytics, Inc.",
+      "website": "https://brightline-analytics.example",
+      "requester": "Priya Shah",
+      "status": "submitted",
+      "status_label": "Submitted",
+      "stage": 1,
+      "tier": null,
+      "tier_reason": null,
+      "approvers": [],
+      "waiting_on": null,
+      "due": null,
+      "overdue": false,
+      "blocker": null,
+      "fields": {
+        "Legal name": "Brightline Analytics, Inc.",
+        "Website": "https://brightline-analytics.example",
+        "Touches customer data": "Yes",
+        "Business owner": "Priya Shah",
+        "Target start": "2026-10-19",
+        "Pilot length": "90 days",
+        "Requester": "Priya Shah",
+        "Requester's manager": "Dan Ortiz",
+        "Source": "email from Priya Shah on 2026-10-05"
+      },
+      "missing_fields": [],
+      "pack": null,
+      "approvals": [],
+      "log": [
+        {
+          "step": "intake",
+          "actor": "bot",
+          "by": "Vendor Intake Bot",
+          "at": "2026-10-09T13:51:42Z",
+          "detail": "Drafted request from email from Priya Shah on 2026-10-05",
+          "label": "Request drafted"
+        },
+        {
+          "step": "intake-confirmed",
+          "actor": "human",
+          "by": "Priya Shah",
+          "at": "2026-10-09T13:51:42Z",
+          "detail": "Requester confirmed the request",
+          "label": "Requester confirmed"
+        }
+      ],
+      "submitted_at": "2026-10-09T13:51:42Z",
+      "decided_at": null,
+      "updated_at": "2026-10-09T13:51:42Z"
     },
     {
       "id": "harbor-signal",
