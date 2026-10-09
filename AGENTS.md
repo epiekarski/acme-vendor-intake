@@ -17,7 +17,7 @@ Grok Bot is the front door; this repo decides. All data here is fictional.
 - Skills: `.cursor/skills/vendor-triage` (intake and triage) and `.cursor/skills/research-pack` (pack and policy check).
 - Records: `vendors/<slug>.yaml`; packs: `packs/<slug>.md`.
 - Saved public pages for the demo: `fixtures/`.
-- Grok Bot's description and skills (source text): `bot/`.
+- Grok Bot's description, skills, and routine (source text): `bot/`.
 - Ops dashboard: page in `dashboard/index.html`, data built by `intake/dashboard.py`, live at https://epiekarski.github.io/acme-vendor-intake/
 
 ## Commands

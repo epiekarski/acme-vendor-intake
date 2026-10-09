@@ -9,7 +9,7 @@ Turns intake answers into a vendor record and applies the policy in `policies/ti
 
 ## Inputs
 
-The five required fields: legal name, website (https), touches customer data (yes/no), business owner, target start date (YYYY-MM-DD). Optional: pilot days (default 90), requester, requester's manager, source.
+Required fields are the `required` list in @schema/vendor.schema.json; the script reports any that are missing. Optional: pilot days (default 90), requester, requester's manager, source.
 
 ## Steps
 
