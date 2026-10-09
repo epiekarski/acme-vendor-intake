@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vendor Intake Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F4F3EF; --panel: #FFFFFF; --ink: #11151C; --ink2: #4A5262; --muted: #8A93A3;
+    --line: #E3E1DA; --soft: #EAE6DE;
+    --blue: #2F4FD6; --blue-bg: #E6EBFF;
+    --orange: #B4541A; --orange-bg: #FBE9DD;
+    --green: #2E7D4F; --green-bg: #E2F2E8;
+    --red: #B3261E; --red-bg: #FBE4E2;
+    --gray-bg: #ECEBE6;
+    --shadow: 0 1px 2px rgba(17,21,28,.04), 0 4px 16px rgba(17,21,28,.05);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.45 'IBM Plex Sans', system-ui, sans-serif; }
+  h1, h2, h3, .num { font-family: 'Space Grotesk', system-ui, sans-serif; }
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 28px 32px 64px; }
+
+  header { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; }
+  .mark { width: 40px; height: 40px; border-radius: 10px; background: var(--ink); color: var(--bg);
+          display: grid; place-items: center; font: 700 20px 'Space Grotesk', sans-serif; }
+  header h1 { margin: 0; font-size: 24px; font-weight: 600; letter-spacing: -.01em; }
+  header p { margin: 2px 0 0; color: var(--ink2); font-size: 14px; }
+  .live { margin-left: auto; display: flex; align-items: center; gap: 8px; color: var(--ink2); font-size: 13px;
+          background: var(--panel); border: 1px solid var(--line); padding: 6px 12px; border-radius: 999px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 0 rgba(46,125,79,.5);
+         animation: pulse 2s infinite; }
+  .dot.stale { background: var(--muted); animation: none; }
+  @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(46,125,79,.45); } 70% { box-shadow: 0 0 0 8px rgba(46,125,79,0); } 100% { box-shadow: 0 0 0 0 rgba(46,125,79,0); } }
+
+  .tiles { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-bottom: 24px; }
+  .tile { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; box-shadow: var(--shadow); }
+  .tile .label { color: var(--ink2); font-size: 13px; }
+  .tile .num { font-size: 30px; font-weight: 600; margin-top: 2px; }
+  .tile.warn .num { color: var(--orange); }
+  .tile.bad .num { color: var(--red); }
+  .tile.good .num { color: var(--green); }
+
+  .bar { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+  .chip { border: 1px solid var(--line); background: var(--panel); color: var(--ink2); padding: 6px 14px; border-radius: 999px;
+          font: 500 13px 'IBM Plex Sans', sans-serif; cursor: pointer; }
+  .chip.on { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .chip .c { opacity: .7; margin-left: 4px; }
+  .search { margin-left: auto; border: 1px solid var(--line); background: var(--panel); border-radius: 999px; padding: 7px 14px;
+            font: 14px 'IBM Plex Sans', sans-serif; width: 240px; color: var(--ink); }
+
+  .list { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow); overflow: hidden; }
+  .row { display: grid; grid-template-columns: 2.2fr 1.6fr 1.5fr 1.5fr 2fr; gap: 16px; align-items: center;
+         padding: 16px 20px; border-top: 1px solid var(--line); cursor: pointer; transition: background .15s; }
+  .row:first-child { border-top: none; }
+  .row.head { cursor: default; background: #FAF9F6; color: var(--muted); font-size: 12px; text-transform: uppercase;
+              letter-spacing: .06em; padding: 10px 20px; }
+  .row:not(.head):hover { background: #FAF9F6; }
+  .row.sel { background: var(--blue-bg); }
+  .vendor { font-weight: 600; font-size: 15px; }
+  .sub { color: var(--muted); font-size: 13px; }
+  .pill { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 600; padding: 3px 10px; border-radius: 999px; white-space: nowrap; }
+  .p-incomplete { background: var(--orange-bg); color: var(--orange); }
+  .p-submitted, .p-researching { background: var(--gray-bg); color: var(--ink2); }
+  .p-pending_approval { background: var(--blue-bg); color: var(--blue); }
+  .p-approved { background: var(--green-bg); color: var(--green); }
+  .p-rejected { background: var(--red-bg); color: var(--red); }
+  .tier { font-size: 11.5px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; padding: 2px 8px; border-radius: 6px;
+          border: 1px solid var(--line); color: var(--ink2); margin-left: 6px; }
+  .tier.high { border-color: #E9C3AA; color: var(--orange); background: #FDF4EE; }
+
+  .steps { display: flex; gap: 4px; margin-top: 8px; }
+  .steps i { flex: 1; height: 5px; border-radius: 3px; background: var(--soft); }
+  .steps i.done { background: var(--ink); }
+  .steps i.now { background: var(--blue); }
+  .steps.rej i.done, .steps.rej i.now { background: var(--red); }
+  .stepname { font-size: 12px; color: var(--ink2); margin-top: 4px; }
+
+  .who { font-size: 14px; }
+  .due { font-size: 14px; }
+  .due.late { color: var(--red); font-weight: 600; }
+  .block { font-size: 13.5px; display: flex; gap: 8px; align-items: flex-start; }
+  .block .ic { flex: none; width: 18px; height: 18px; border-radius: 50%; display: grid; place-items: center; font-size: 11px; font-weight: 700; margin-top: 1px; }
+  .block.missing .ic, .block.research .ic { background: var(--orange-bg); color: var(--orange); }
+  .block.overdue .ic, .block.ops .ic { background: var(--red-bg); color: var(--red); }
+  .block.ok { color: var(--muted); }
+  .block.ok .ic { background: var(--green-bg); color: var(--green); }
+  .empty { padding: 48px 20px; text-align: center; color: var(--muted); }
+
+  /* Drawer */
+  .scrim { position: fixed; inset: 0; background: rgba(17,21,28,.25); opacity: 0; pointer-events: none; transition: opacity .2s; }
+  .scrim.open { opacity: 1; pointer-events: auto; }
+  .drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(520px, 100vw); background: var(--panel); box-shadow: -8px 0 32px rgba(17,21,28,.12);
+            transform: translateX(100%); transition: transform .25s ease; overflow-y: auto; }
+  .drawer.open { transform: none; }
+  .dhead { padding: 24px 28px 18px; border-bottom: 1px solid var(--line); position: sticky; top: 0; background: var(--panel); z-index: 1; }
+  .dhead h2 { margin: 0 0 6px; font-size: 22px; }
+  .close { position: absolute; top: 18px; right: 18px; border: none; background: var(--gray-bg); width: 32px; height: 32px; border-radius: 50%;
+           cursor: pointer; font-size: 18px; color: var(--ink2); }
+  .dbody { padding: 8px 28px 40px; }
+  .sec { margin-top: 22px; }
+  .sec h3 { font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 0 0 10px; font-weight: 600; }
+  .callout { border-radius: 12px; padding: 12px 14px; font-size: 14px; margin-top: 16px; }
+  .callout.missing, .callout.research { background: var(--orange-bg); color: var(--orange); }
+  .callout.overdue, .callout.ops { background: var(--red-bg); color: var(--red); }
+  .callout.ok { background: var(--green-bg); color: var(--green); }
+  dl { display: grid; grid-template-columns: 170px 1fr; gap: 8px 12px; margin: 0; font-size: 14px; }
+  dt { color: var(--ink2); }
+  dd { margin: 0; overflow-wrap: anywhere; }
+  dd.missing { color: var(--orange); font-weight: 600; }
+  .apv { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-top: 1px solid var(--line); font-size: 14px; }
+  .apv:first-child { border-top: none; }
+  .apv .state { margin-left: auto; }
+  .s-approved { background: var(--green-bg); color: var(--green); }
+  .s-rejected { background: var(--red-bg); color: var(--red); }
+  .s-waiting { background: var(--blue-bg); color: var(--blue); }
+  .s-pending { background: var(--gray-bg); color: var(--ink2); }
+  .gaps { display: flex; flex-wrap: wrap; gap: 6px; }
+  .gap { background: var(--orange-bg); color: var(--orange); font-size: 12.5px; font-weight: 500; padding: 3px 10px; border-radius: 999px; }
+  .tl { position: relative; padding-left: 4px; }
+  .ev { display: grid; grid-template-columns: 30px 1fr; gap: 12px; padding-bottom: 16px; position: relative; }
+  .ev:not(:last-child)::before { content: ""; position: absolute; left: 14px; top: 30px; bottom: 0; width: 2px; background: var(--line); }
+  .av { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font-size: 11.5px; font-weight: 700; }
+  .av.bot { background: var(--blue-bg); color: var(--blue); }
+  .av.human { background: var(--orange-bg); color: var(--orange); }
+  .ev .t { font-weight: 600; font-size: 14px; }
+  .ev .m { color: var(--muted); font-size: 12.5px; }
+  .ev .d { color: var(--ink2); font-size: 13.5px; margin-top: 2px; }
+  .legend { display: flex; gap: 14px; font-size: 12.5px; color: var(--ink2); margin-bottom: 12px; }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .legend b { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+  footer { margin-top: 20px; color: var(--muted); font-size: 12.5px; text-align: center; }
+
+  @media (max-width: 960px) {
+    .tiles { grid-template-columns: repeat(3, 1fr); }
+    .row { grid-template-columns: 1fr 1fr; }
+    .row.head { display: none; }
+    .search { width: 100%; margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="mark">A</div>
+    <div>
+      <h1>Vendor Intake</h1>
+      <p>Every vendor pilot request at Acme, live from the intake records</p>
+    </div>
+    <div class="live"><span class="dot" id="dot"></span><span id="updated">Loading…</span></div>
+  </header>
+
+  <section class="tiles" id="tiles"></section>
+
+  <div class="bar" id="filters">
+    <button class="chip on" data-f="open">Open<span class="c" id="c-open"></span></button>
+    <button class="chip" data-f="blocked">Needs attention<span class="c" id="c-blocked"></span></button>
+    <button class="chip" data-f="done">Done<span class="c" id="c-done"></span></button>
+    <button class="chip" data-f="all">All<span class="c" id="c-all"></span></button>
+    <input class="search" id="q" placeholder="Search vendor or person" aria-label="Search">
+  </div>
+
+  <section class="list" id="list"></section>
+  <footer>Records are written by the repo's rules as Grok Bot runs each step. Every step is logged as Bot or a named person. All data is fictional.</footer>
+</div>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="Request details"></aside>
+
+<script>
+const S = { data: null, filter: "open", q: "", open: null, lastOk: 0 };
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const cap = (s) => s ? s.charAt(0).toUpperCase() + s.slice(1) : "";
+
+function when(iso) {
+  if (!iso) return "";
+  const d = new Date(iso);
+  return d.toLocaleString(undefined, { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
+}
+function ago(iso) {
+  const s = Math.max(0, (Date.now() - new Date(iso)) / 1000);
+  if (s < 60) return "just now";
+  if (s < 3600) return Math.round(s / 60) + " min ago";
+  if (s < 86400) return Math.round(s / 3600) + "h ago";
+  return Math.round(s / 86400) + "d ago";
+}
+function dueText(r) {
+  if (!r.due) return r.status === "approved" ? "Decided " + when(r.decided_at) : "—";
+  const h = (new Date(r.due) - Date.now()) / 3600000;
+  if (h < 0) return "Overdue " + Math.round(-h) + "h";
+  if (h < 24) return "Due in " + Math.max(1, Math.round(h)) + "h";
+  return "Due " + new Date(r.due).toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric" });
+}
+function initials(name) {
+  return (name || "?").split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[0]).join("").toUpperCase();
+}
+
+function tiles(d) {
+  const s = d.summary, m = d.metrics;
+  const t = [
+    ["Open requests", s.open, ""],
+    ["Waiting on a person", s.waiting_on_person, ""],
+    ["Overdue", s.overdue, s.overdue ? "bad" : ""],
+    ["Incomplete", s.incomplete, s.incomplete ? "warn" : ""],
+    ["Approved", s.approved, "good"],
+    ["Median cycle time", m.median_cycle_hours == null ? "—" : m.median_cycle_hours + "h", ""],
+  ];
+  $("tiles").innerHTML = t.map(([l, n, c]) => `<div class="tile ${c}"><div class="label">${l}</div><div class="num">${n}</div></div>`).join("");
+}
+
+function matches(r) {
+  const f = S.filter;
+  if (f === "open" && r.stage === 4) return false;
+  if (f === "done" && r.stage !== 4) return false;
+  if (f === "blocked" && !r.blocker) return false;
+  if (!S.q) return true;
+  const hay = [r.vendor, r.requester, r.waiting_on && r.waiting_on.name, ...r.approvers.map((a) => a.name)].join(" ").toLowerCase();
+  return hay.includes(S.q.toLowerCase());
+}
+
+function blockerHtml(r) {
+  if (r.blocker) {
+    const icon = r.blocker.kind === "overdue" ? "!" : r.blocker.kind === "ops" ? "!" : "?";
+    return `<div class="block ${r.blocker.kind}"><span class="ic">${icon}</span><span>${esc(r.blocker.text)}</span></div>`;
+  }
+  if (r.stage === 4) return `<div class="block ok"><span class="ic">✓</span><span>${r.status === "approved" ? "Approved" : "Closed"}</span></div>`;
+  return `<div class="block ok"><span class="ic">✓</span><span>On track</span></div>`;
+}
+
+function stepsHtml(r, stages) {
+  const rej = r.status === "rejected";
+  const bars = stages.map((_, i) => `<i class="${i < r.stage || r.stage === 4 ? "done" : i === r.stage ? "now" : ""}"></i>`).join("");
+  return `<div class="steps ${rej ? "rej" : ""}">${bars}</div><div class="stepname">${r.stage === 4 ? "Done" : "Step " + (r.stage + 1) + " of 5 · " + stages[r.stage]}</div>`;
+}
+
+function list(d) {
+  const all = d.requests;
+  $("c-open").textContent = all.filter((r) => r.stage < 4).length;
+  $("c-blocked").textContent = all.filter((r) => r.blocker).length;
+  $("c-done").textContent = all.filter((r) => r.stage === 4).length;
+  $("c-all").textContent = all.length;
+  const rows = all.filter(matches);
+  const head = `<div class="row head"><div>Vendor</div><div>Status</div><div>Waiting on</div><div>Deadline</div><div>Blocker</div></div>`;
+  if (!rows.length) { $("list").innerHTML = head + `<div class="empty">No requests here.</div>`; return; }
+  $("list").innerHTML = head + rows.map((r) => `
+    <div class="row ${S.open === r.id ? "sel" : ""}" data-id="${esc(r.id)}" tabindex="0">
+      <div><div class="vendor">${esc(r.vendor)}${r.tier ? `<span class="tier ${r.tier === "high" ? "high" : ""}">${esc(r.tier)}</span>` : ""}</div>
+           <div class="sub">${r.requester ? "Requested by " + esc(r.requester) : ""}</div></div>
+      <div><span class="pill p-${esc(r.status)}">${esc(r.status_label)}</span>${stepsHtml(r, d.stages)}</div>
+      <div class="who">${r.waiting_on ? esc(r.waiting_on.name) + `<div class="sub">${esc(cap(r.waiting_on.role))}</div>` : r.status === "incomplete" ? esc(r.requester || "Requester") + `<div class="sub">Requester</div>` : `<span class="sub">—</span>`}</div>
+      <div class="due ${r.overdue ? "late" : ""}">${esc(dueText(r))}</div>
+      <div>${blockerHtml(r)}</div>
+    </div>`).join("");
+}
+
+function drawer(r) {
+  if (!r) return;
+  const f = Object.entries(r.fields).map(([k, v]) => {
+    const miss = !v && r.missing_fields.includes(k);
+    return v || miss ? `<dt>${esc(k)}</dt><dd class="${miss ? "missing" : ""}">${miss ? "Missing" : esc(v)}</dd>` : "";
+  }).join("");
+  const call = r.blocker ? `<div class="callout ${r.blocker.kind}"><b>What's holding it up:</b> ${esc(r.blocker.text)}</div>`
+    : r.stage < 4 ? `<div class="callout ok"><b>On track.</b> ${r.waiting_on ? "Waiting on " + esc(r.waiting_on.name) + (r.due ? ", " + esc(dueText(r).replace(/^D/, "d").replace(/^O/, "o")) : "") + "." : "The Bot is working on the next step."}</div>` : "";
+  const route = r.tier ? `<div class="sec"><h3>Approval route</h3>
+      <dl><dt>Tier</dt><dd>${esc(cap(r.tier))}</dd>${r.tier_reason ? `<dt>Why</dt><dd>${esc(r.tier_reason)}</dd>` : ""}${r.due ? `<dt>Deadline</dt><dd>${esc(when(r.due))}</dd>` : ""}</dl>
+      <div style="margin-top:10px">${r.approvers.map((a) => `<div class="apv"><span class="av ${a.state === "approved" || a.state === "rejected" ? "human" : "bot"}" style="width:28px;height:28px">${esc(initials(a.name))}</span>
+        <div><div>${esc(a.name)}</div><div class="sub">${esc(cap(a.role))}</div></div>
+        <span class="pill state s-${a.state}">${a.state === "waiting" ? "Waiting on them" : cap(a.state)}</span></div>`).join("")}</div></div>` : "";
+  const pack = r.pack ? `<div class="sec"><h3>Research pack</h3>
+      <dl><dt>Check</dt><dd>${r.pack.complete ? "Passed" : r.pack.problems.length + " problem(s)"}${r.pack.checked_at ? ` <span class="sub">· ${esc(when(r.pack.checked_at))}</span>` : ""}</dd></dl>
+      ${r.pack.policy_gaps.length ? `<div class="sub" style="margin:10px 0 6px">Policy gaps flagged for approvers</div><div class="gaps">${r.pack.policy_gaps.map((g) => `<span class="gap">${esc(g)}</span>`).join("")}</div>` : `<div class="sub" style="margin-top:8px">No policy gaps</div>`}
+      ${r.pack.problems.length ? `<ul class="sub">${r.pack.problems.map((p) => `<li>${esc(p)}</li>`).join("")}</ul>` : ""}</div>` : "";
+  const notes = r.approvals.filter((a) => a.note).map((a) => `<dt>${esc(a.name)}</dt><dd>“${esc(a.note)}”</dd>`).join("");
+  const tl = [...r.log].reverse().map((s) => `
+    <div class="ev"><div class="av ${s.actor}">${s.actor === "bot" ? "Bot" : esc(initials(s.by))}</div>
+      <div><div class="t">${esc(s.label)}</div><div class="m">${esc(s.by)} · ${esc(when(s.at))}</div>${s.detail ? `<div class="d">${esc(s.detail)}</div>` : ""}</div></div>`).join("");
+  $("drawer").innerHTML = `
+    <div class="dhead"><button class="close" id="close" aria-label="Close">×</button>
+      <h2>${esc(r.vendor)}</h2>
+      <span class="pill p-${esc(r.status)}">${esc(r.status_label)}</span>${r.tier ? `<span class="tier ${r.tier === "high" ? "high" : ""}">${esc(r.tier)}</span>` : ""}
+      ${call}</div>
+    <div class="dbody">
+      <div class="sec"><h3>Request</h3><dl>${f}</dl></div>
+      ${route}${pack}
+      ${notes ? `<div class="sec"><h3>Approver notes</h3><dl>${notes}</dl></div>` : ""}
+      <div class="sec"><h3>Audit trail</h3>
+        <div class="legend"><span><b style="background:var(--blue)"></b>Grok Bot</span><span><b style="background:var(--orange)"></b>Named person</span></div>
+        <div class="tl">${tl}</div></div>
+    </div>`;
+  $("close").onclick = closeDrawer;
+}
+
+function openDrawer(id) {
+  S.open = id;
+  drawer(S.data.requests.find((r) => r.id === id));
+  $("drawer").classList.add("open"); $("scrim").classList.add("open");
+  list(S.data);
+}
+function closeDrawer() {
+  S.open = null; $("drawer").classList.remove("open"); $("scrim").classList.remove("open");
+  if (S.data) list(S.data);
+}
+
+function render() {
+  const d = S.data; if (!d) return;
+  tiles(d); list(d);
+  if (S.open) { const r = d.requests.find((x) => x.id === S.open); r ? drawer(r) : closeDrawer(); }
+  status();
+}
+function status() {
+  if (!S.data) return;
+  const stale = Date.now() - S.lastOk > 60000;
+  $("dot").classList.toggle("stale", stale);
+  $("updated").textContent = (stale ? "Last update " : "Live · updated ") + ago(S.data.generated_at);
+}
+
+async function load() {
+  try {
+    const res = await fetch("data.json?t=" + Date.now(), { cache: "no-store" });
+    if (!res.ok) throw new Error(res.status);
+    const d = await res.json();
+    const changed = !S.data || d.generated_at !== S.data.generated_at;
+    S.data = d; S.lastOk = Date.now();
+    if (changed) render(); else status();
+  } catch (e) {
+    if (!S.data) { $("updated").textContent = "Waiting for data…"; $("list").innerHTML = `<div class="empty">No data yet. It appears after the Bot's first step.</div>`; }
+    status();
+  }
+}
+
+$("filters").addEventListener("click", (e) => {
+  const b = e.target.closest(".chip"); if (!b) return;
+  S.filter = b.dataset.f;
+  document.querySelectorAll(".chip").forEach((c) => c.classList.toggle("on", c === b));
+  list(S.data);
+});
+$("q").addEventListener("input", (e) => { S.q = e.target.value.trim(); list(S.data); });
+$("list").addEventListener("click", (e) => { const r = e.target.closest(".row[data-id]"); if (r) openDrawer(r.dataset.id); });
+$("list").addEventListener("keydown", (e) => { if (e.key === "Enter") { const r = e.target.closest(".row[data-id]"); if (r) openDrawer(r.dataset.id); } });
+$("scrim").onclick = closeDrawer;
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeDrawer(); });
+
+load();
+setInterval(load, 15000);
+setInterval(status, 30000);
+</script>
+</body>
+</html>

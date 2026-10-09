@@ -10,6 +10,7 @@ import argparse
 import json
 import sys
 
+from . import dashboard
 from . import policy as pol
 from . import workflow as wf
 from .core import IntakeError, all_vendors, load_vendor
@@ -128,15 +129,26 @@ def main(argv: list[str] | None = None) -> int:
 
     sub.add_parser("metrics", help="cycle time and exception rate")
 
+    sub.add_parser("publish", help="rebuild the Ops dashboard and push it to GitHub Pages")
+
     args = parser.parse_args(argv)
     try:
-        return _run(args)
+        code = _run(args)
+        if code == 0 and args.cmd in CHANGES:
+            dashboard.auto_publish()
+        return code
     except IntakeError as e:
         print(f"ERROR: {e}", file=sys.stderr)
         return 1
 
 
+CHANGES = {"new", "update", "triage", "pack-check", "decide", "flag"}
+
+
 def _run(args) -> int:
+    if args.cmd == "publish":
+        print(dashboard.publish())
+        return 0
     if args.cmd == "new":
         record = wf.new_request(_fields(args), args.confirmed_by)
         _print(record, args.json)

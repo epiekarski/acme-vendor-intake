@@ -7,6 +7,7 @@ Grok Bot is the front door; this repo decides. All data here is fictional.
 
 - Never decide a tier, approver, SLA, or pack result by judgment. Run the scripts and report what they print.
 - Never approve anything or edit a vendor file's `approvals` block. Only a named person approves, recorded with `python -m intake decide`.
+- Never edit the dashboard by hand. It's built from the vendor records and published to the `gh-pages` branch automatically after every change.
 - Run commands from the repo root.
 
 ## Where things are
@@ -17,9 +18,11 @@ Grok Bot is the front door; this repo decides. All data here is fictional.
 - Records: `vendors/<slug>.yaml`; packs: `packs/<slug>.md`.
 - Saved public pages for the demo: `fixtures/`.
 - Grok Bot's description and skills (source text): `bot/`.
+- Ops dashboard: page in `dashboard/index.html`, data built by `intake/dashboard.py`, live at https://epiekarski.github.io/acme-vendor-intake/
 
 ## Commands
 
 - `make test`: run before proposing any change.
 - `make seed`: load three fictional sample requests (incomplete, overdue, approved) when asked to load sample or demo requests. `make clean` removes all records.
+- `python -m intake publish`: rebuild and push the dashboard (also runs automatically after every change).
 - `python -m intake status`: every request; `--waiting-on "<name or role>"`, `--overdue`, `--customer-data` to filter.
