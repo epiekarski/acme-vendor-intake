@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-14T13:02:48Z",
+  "generated_at": "2026-10-14T13:02:53Z",
   "required_fields": [
     "Legal name",
     "Website",
@@ -26,7 +26,7 @@
     "requests": 4,
     "decided": 1,
     "median_cycle_hours": 24.0,
-    "exception_rate": 0.25
+    "exception_rate": 0.5
   },
   "requests": [
     {
@@ -76,116 +76,6 @@
       "submitted_at": null,
       "decided_at": null,
       "updated_at": "2026-10-07T14:06:00Z"
-    },
-    {
-      "id": "brightline-analytics",
-      "vendor": "Brightline Analytics, Inc.",
-      "website": "https://brightline-analytics.example",
-      "requester": "Priya Shah",
-      "status": "pending_approval",
-      "status_label": "Awaiting approval",
-      "stage": 3,
-      "tier": "high",
-      "tier_reason": "Vendor will touch customer data, so Security must review",
-      "approvers": [
-        {
-          "role": "manager",
-          "name": "Dan Ortiz",
-          "state": "approved"
-        },
-        {
-          "role": "security",
-          "name": "Sam Lee",
-          "state": "waiting"
-        }
-      ],
-      "waiting_on": {
-        "role": "security",
-        "name": "Sam Lee"
-      },
-      "due": "2026-10-11T14:33:47Z",
-      "overdue": true,
-      "blocker": {
-        "kind": "overdue",
-        "text": "Overdue 70h: waiting on Sam Lee"
-      },
-      "fields": {
-        "Legal name": "Brightline Analytics, Inc.",
-        "Website": "https://brightline-analytics.example",
-        "Touches customer data": "Yes",
-        "Business owner": "Priya Shah",
-        "Target start": "2026-10-19",
-        "Pilot length": "90 days",
-        "Requester": "Priya Shah",
-        "Requester's manager": "Dan Ortiz",
-        "Source": "email from Priya Shah on 2026-10-05"
-      },
-      "missing_fields": [],
-      "pack": {
-        "complete": true,
-        "checked_at": "2026-10-09T14:34:07Z",
-        "problems": [],
-        "policy_gaps": [
-          "Sub-processor list",
-          "Breach notification",
-          "Data residency",
-          "Liability cap"
-        ]
-      },
-      "approvals": [
-        {
-          "role": "manager",
-          "name": "Dan Ortiz",
-          "decision": "approved",
-          "at": "2026-10-09T14:35:41Z",
-          "note": "Approved in chat"
-        }
-      ],
-      "log": [
-        {
-          "step": "intake",
-          "actor": "bot",
-          "by": "Vendor Intake Bot",
-          "at": "2026-10-09T14:33:47Z",
-          "detail": "Drafted request from email from Priya Shah on 2026-10-05",
-          "label": "Request drafted"
-        },
-        {
-          "step": "intake-confirmed",
-          "actor": "human",
-          "by": "Priya Shah",
-          "at": "2026-10-09T14:33:47Z",
-          "detail": "Requester confirmed the request",
-          "label": "Requester confirmed"
-        },
-        {
-          "step": "triage",
-          "actor": "bot",
-          "by": "Vendor Intake Bot",
-          "at": "2026-10-09T14:33:50Z",
-          "detail": "Tier high via customer-data; approvers manager, security",
-          "label": "Triage: route set"
-        },
-        {
-          "step": "pack-check",
-          "actor": "bot",
-          "by": "Vendor Intake Bot",
-          "at": "2026-10-09T14:34:07Z",
-          "detail": "Pack complete; policy gaps flagged for approvers: subprocessors, breach-notice, residency, liability",
-          "label": "Research pack checked"
-        },
-        {
-          "step": "approval-manager",
-          "actor": "human",
-          "by": "Dan Ortiz",
-          "at": "2026-10-09T14:35:41Z",
-          "detail": "approved: Approved in chat",
-          "label": "Manager decision"
-        }
-      ],
-      "submitted_at": "2026-10-09T14:33:47Z",
-      "decided_at": null,
-      "updated_at": "2026-10-09T14:35:41Z"
     },
     {
       "id": "quillbase",
@@ -294,6 +184,124 @@
       "submitted_at": "2026-10-08T08:06:00Z",
       "decided_at": null,
       "updated_at": "2026-10-14T13:02:48Z"
+    },
+    {
+      "id": "brightline-analytics",
+      "vendor": "Brightline Analytics, Inc.",
+      "website": "https://brightline-analytics.example",
+      "requester": "Priya Shah",
+      "status": "pending_approval",
+      "status_label": "Awaiting approval",
+      "stage": 3,
+      "tier": "high",
+      "tier_reason": "Vendor will touch customer data, so Security must review",
+      "approvers": [
+        {
+          "role": "manager",
+          "name": "Dan Ortiz",
+          "state": "approved"
+        },
+        {
+          "role": "security",
+          "name": "Sam Lee",
+          "state": "waiting"
+        }
+      ],
+      "waiting_on": {
+        "role": "security",
+        "name": "Sam Lee"
+      },
+      "due": "2026-10-11T14:33:47Z",
+      "overdue": true,
+      "blocker": {
+        "kind": "ops",
+        "text": "Flagged to Ops: approval overdue"
+      },
+      "fields": {
+        "Legal name": "Brightline Analytics, Inc.",
+        "Website": "https://brightline-analytics.example",
+        "Touches customer data": "Yes",
+        "Business owner": "Priya Shah",
+        "Target start": "2026-10-19",
+        "Pilot length": "90 days",
+        "Requester": "Priya Shah",
+        "Requester's manager": "Dan Ortiz",
+        "Source": "email from Priya Shah on 2026-10-05"
+      },
+      "missing_fields": [],
+      "pack": {
+        "complete": true,
+        "checked_at": "2026-10-09T14:34:07Z",
+        "problems": [],
+        "policy_gaps": [
+          "Sub-processor list",
+          "Breach notification",
+          "Data residency",
+          "Liability cap"
+        ]
+      },
+      "approvals": [
+        {
+          "role": "manager",
+          "name": "Dan Ortiz",
+          "decision": "approved",
+          "at": "2026-10-09T14:35:41Z",
+          "note": "Approved in chat"
+        }
+      ],
+      "log": [
+        {
+          "step": "intake",
+          "actor": "bot",
+          "by": "Vendor Intake Bot",
+          "at": "2026-10-09T14:33:47Z",
+          "detail": "Drafted request from email from Priya Shah on 2026-10-05",
+          "label": "Request drafted"
+        },
+        {
+          "step": "intake-confirmed",
+          "actor": "human",
+          "by": "Priya Shah",
+          "at": "2026-10-09T14:33:47Z",
+          "detail": "Requester confirmed the request",
+          "label": "Requester confirmed"
+        },
+        {
+          "step": "triage",
+          "actor": "bot",
+          "by": "Vendor Intake Bot",
+          "at": "2026-10-09T14:33:50Z",
+          "detail": "Tier high via customer-data; approvers manager, security",
+          "label": "Triage: route set"
+        },
+        {
+          "step": "pack-check",
+          "actor": "bot",
+          "by": "Vendor Intake Bot",
+          "at": "2026-10-09T14:34:07Z",
+          "detail": "Pack complete; policy gaps flagged for approvers: subprocessors, breach-notice, residency, liability",
+          "label": "Research pack checked"
+        },
+        {
+          "step": "approval-manager",
+          "actor": "human",
+          "by": "Dan Ortiz",
+          "at": "2026-10-09T14:35:41Z",
+          "detail": "approved: Approved in chat",
+          "label": "Manager decision"
+        },
+        {
+          "step": "exception",
+          "actor": "bot",
+          "by": "Vendor Intake Bot",
+          "at": "2026-10-14T13:02:53Z",
+          "detail": "Flagged to Ops: approval overdue",
+          "label": "Flagged to Ops"
+        }
+      ],
+      "submitted_at": "2026-10-09T14:33:47Z",
+      "decided_at": null,
+      "updated_at": "2026-10-14T13:02:53Z"
     },
     {
       "id": "harbor-signal",
