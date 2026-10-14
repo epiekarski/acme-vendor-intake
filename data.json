@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-13T13:12:37Z",
+  "generated_at": "2026-10-14T13:02:48Z",
   "required_fields": [
     "Legal name",
     "Website",
@@ -107,7 +107,7 @@
       "overdue": true,
       "blocker": {
         "kind": "overdue",
-        "text": "Overdue 47h: waiting on Sam Lee"
+        "text": "Overdue 70h: waiting on Sam Lee"
       },
       "fields": {
         "Legal name": "Brightline Analytics, Inc.",
@@ -281,11 +281,19 @@
           "at": "2026-10-13T13:12:37Z",
           "detail": "Flagged to Ops: approval overdue",
           "label": "Flagged to Ops"
+        },
+        {
+          "step": "exception",
+          "actor": "bot",
+          "by": "Vendor Intake Bot",
+          "at": "2026-10-14T13:02:48Z",
+          "detail": "Flagged to Ops: approval overdue",
+          "label": "Flagged to Ops"
         }
       ],
       "submitted_at": "2026-10-08T08:06:00Z",
       "decided_at": null,
-      "updated_at": "2026-10-13T13:12:37Z"
+      "updated_at": "2026-10-14T13:02:48Z"
     },
     {
       "id": "harbor-signal",
