@@ -40,6 +40,7 @@ Edit `policies/tiers.json`, add a test in `tests/test_policy.py`, and run `make 
 ## What's in the repo
 
 - `AGENTS.md`, `.cursor/rules/`: guidance for any agent working here
+- `.cursor/hooks.json`, `.cursor/hooks/`: the hook that keeps agents out of vendor records
 - `.cursor/skills/`: `vendor-triage` and `research-pack`, each with its script
 - `policies/`: tier rules and the MSA checklist
 - `bot/`: source text for the Grok Bot description and its two skills
@@ -54,6 +55,16 @@ Edit `policies/tiers.json`, add a test in `tests/test_policy.py`, and run `make 
 | The Bot conversation and approval flow | The request email (a fixture, not a real inbox) |
 | | Approver pings (role-played in the Bot thread, not Slack DMs) |
 
-## Not yet built
+## Guardrail hook
 
-- `.cursor/hooks.json`: a hook that blocks agents from editing the `approvals` block of a vendor file. To be built with Grok Build's `/create-hook`.
+`.cursor/hooks.json` runs `.cursor/hooks/guard_records.py` on every agent tool call:
+
+- `preToolUse` (Write, Delete): denies any direct write to `vendors/`
+- `beforeShellExecution`: denies shell commands that write into `vendors/` (`>>`, `sed -i`, `rm`, ...)
+- `afterFileEdit`: safety net; if an edit landed anyway, reverts it with git
+
+Records change only through `python -m intake`, and approvals only through `intake decide` for a named person. Tests: `tests/test_hooks.py`. Try it by hand:
+
+```
+echo '{"tool_name":"Write","tool_input":{"path":"vendors/x.yaml"}}' | python3 .cursor/hooks/guard_records.py pre
+```

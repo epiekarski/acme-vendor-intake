@@ -6,7 +6,7 @@ Grok Bot is the front door; this repo decides. All data here is fictional.
 ## Ground rules
 
 - Never decide a tier, approver, SLA, or pack result by judgment. Run the scripts and report what they print.
-- Never approve anything or edit a vendor file's `approvals` block. Only a named person approves, recorded with `python -m intake decide`.
+- Never approve anything or edit a vendor file directly. Only a named person approves, recorded with `python -m intake decide`. A hook (`.cursor/hooks.json`) blocks direct writes to `vendors/`.
 - Never edit the dashboard by hand. It's built from the vendor records and published to the `gh-pages` branch automatically after every change.
 - Run commands from the repo root.
 
