@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-26T23:58:31Z",
+  "generated_at": "2026-10-26T23:59:45Z",
   "required_fields": [
     "Legal name",
     "Website",
@@ -15,16 +15,16 @@
     "Done"
   ],
   "summary": {
-    "open": 3,
-    "waiting_on_person": 3,
+    "open": 2,
+    "waiting_on_person": 2,
     "overdue": 1,
     "incomplete": 1,
-    "approved": 1,
+    "approved": 2,
     "rejected": 0
   },
   "metrics": {
     "requests": 4,
-    "decided": 1,
+    "decided": 2,
     "median_cycle_hours": 24.0,
     "exception_rate": 0.0
   },
@@ -162,121 +162,6 @@
       "updated_at": "2026-10-24T20:46:22Z"
     },
     {
-      "id": "brightline-analytics",
-      "vendor": "Brightline Analytics, Inc.",
-      "website": "https://brightline-analytics.example",
-      "requester": "Priya Shah",
-      "status": "pending_approval",
-      "status_label": "Awaiting approval",
-      "stage": 3,
-      "tier": "high",
-      "tier_reason": "Vendor will touch customer data, so Security must review",
-      "approvers": [
-        {
-          "role": "manager",
-          "name": "Dan Ortiz",
-          "state": "approved"
-        },
-        {
-          "role": "security",
-          "name": "Sam Lee",
-          "state": "waiting"
-        }
-      ],
-      "waiting_on": {
-        "role": "security",
-        "name": "Sam Lee"
-      },
-      "due": "2026-10-28T23:56:53Z",
-      "overdue": false,
-      "blocker": null,
-      "fields": {
-        "Legal name": "Brightline Analytics, Inc.",
-        "Website": "https://brightline-analytics.example",
-        "Touches customer data": "Yes",
-        "Business owner": "Priya Shah",
-        "Target start": "2026-11-02",
-        "Pilot length": "90 days",
-        "Requester": "Priya Shah",
-        "Requester's manager": "Dan Ortiz",
-        "Source": "email from Priya Shah on October 5"
-      },
-      "missing_fields": [],
-      "pack": {
-        "complete": true,
-        "checked_at": "2026-10-26T23:57:29Z",
-        "problems": [],
-        "policy_gaps": [
-          "Sub-processor list",
-          "Breach notification",
-          "Data residency",
-          "Liability cap"
-        ]
-      },
-      "approvals": [
-        {
-          "role": "manager",
-          "name": "Dan Ortiz",
-          "decision": "approved",
-          "at": "2026-10-26T23:58:30Z",
-          "note": "Approved in chat"
-        }
-      ],
-      "log": [
-        {
-          "step": "intake",
-          "actor": "bot",
-          "by": "Vendor Intake Bot",
-          "at": "2026-10-26T23:54:28Z",
-          "detail": "Drafted request from email from Priya Shah on October 5",
-          "label": "Request drafted"
-        },
-        {
-          "step": "intake",
-          "actor": "bot",
-          "by": "Vendor Intake Bot",
-          "at": "2026-10-26T23:56:53Z",
-          "detail": "Updated fields: business_owner, target_start_date",
-          "label": "Request drafted"
-        },
-        {
-          "step": "intake-confirmed",
-          "actor": "human",
-          "by": "Priya Shah",
-          "at": "2026-10-26T23:56:53Z",
-          "detail": "Requester confirmed the request",
-          "label": "Requester confirmed"
-        },
-        {
-          "step": "triage",
-          "actor": "bot",
-          "by": "Vendor Intake Bot",
-          "at": "2026-10-26T23:56:54Z",
-          "detail": "Tier high via customer-data; approvers manager, security",
-          "label": "Triage: route set"
-        },
-        {
-          "step": "pack-check",
-          "actor": "bot",
-          "by": "Vendor Intake Bot",
-          "at": "2026-10-26T23:57:29Z",
-          "detail": "Pack complete; policy gaps flagged for approvers: subprocessors, breach-notice, residency, liability",
-          "label": "Research pack checked"
-        },
-        {
-          "step": "approval-manager",
-          "actor": "human",
-          "by": "Dan Ortiz",
-          "at": "2026-10-26T23:58:30Z",
-          "detail": "approved: Approved in chat",
-          "label": "Manager decision"
-        }
-      ],
-      "submitted_at": "2026-10-26T23:56:53Z",
-      "decided_at": null,
-      "updated_at": "2026-10-26T23:58:30Z"
-    },
-    {
       "id": "harbor-signal",
       "vendor": "Harbor Signal, Inc.",
       "website": "https://harbor-signal.example",
@@ -389,6 +274,133 @@
       "submitted_at": "2026-10-22T01:46:22Z",
       "decided_at": "2026-10-23T01:46:22Z",
       "updated_at": "2026-10-23T01:46:22Z"
+    },
+    {
+      "id": "brightline-analytics",
+      "vendor": "Brightline Analytics, Inc.",
+      "website": "https://brightline-analytics.example",
+      "requester": "Priya Shah",
+      "status": "approved",
+      "status_label": "Approved",
+      "stage": 4,
+      "tier": "high",
+      "tier_reason": "Vendor will touch customer data, so Security must review",
+      "approvers": [
+        {
+          "role": "manager",
+          "name": "Dan Ortiz",
+          "state": "approved"
+        },
+        {
+          "role": "security",
+          "name": "Sam Lee",
+          "state": "approved"
+        }
+      ],
+      "waiting_on": null,
+      "due": null,
+      "overdue": false,
+      "blocker": null,
+      "fields": {
+        "Legal name": "Brightline Analytics, Inc.",
+        "Website": "https://brightline-analytics.example",
+        "Touches customer data": "Yes",
+        "Business owner": "Priya Shah",
+        "Target start": "2026-11-02",
+        "Pilot length": "90 days",
+        "Requester": "Priya Shah",
+        "Requester's manager": "Dan Ortiz",
+        "Source": "email from Priya Shah on October 5"
+      },
+      "missing_fields": [],
+      "pack": {
+        "complete": true,
+        "checked_at": "2026-10-26T23:57:29Z",
+        "problems": [],
+        "policy_gaps": [
+          "Sub-processor list",
+          "Breach notification",
+          "Data residency",
+          "Liability cap"
+        ]
+      },
+      "approvals": [
+        {
+          "role": "manager",
+          "name": "Dan Ortiz",
+          "decision": "approved",
+          "at": "2026-10-26T23:58:30Z",
+          "note": "Approved in chat"
+        },
+        {
+          "role": "security",
+          "name": "Sam Lee",
+          "decision": "approved",
+          "at": "2026-10-26T23:59:45Z",
+          "note": "Approved in chat"
+        }
+      ],
+      "log": [
+        {
+          "step": "intake",
+          "actor": "bot",
+          "by": "Vendor Intake Bot",
+          "at": "2026-10-26T23:54:28Z",
+          "detail": "Drafted request from email from Priya Shah on October 5",
+          "label": "Request drafted"
+        },
+        {
+          "step": "intake",
+          "actor": "bot",
+          "by": "Vendor Intake Bot",
+          "at": "2026-10-26T23:56:53Z",
+          "detail": "Updated fields: business_owner, target_start_date",
+          "label": "Request drafted"
+        },
+        {
+          "step": "intake-confirmed",
+          "actor": "human",
+          "by": "Priya Shah",
+          "at": "2026-10-26T23:56:53Z",
+          "detail": "Requester confirmed the request",
+          "label": "Requester confirmed"
+        },
+        {
+          "step": "triage",
+          "actor": "bot",
+          "by": "Vendor Intake Bot",
+          "at": "2026-10-26T23:56:54Z",
+          "detail": "Tier high via customer-data; approvers manager, security",
+          "label": "Triage: route set"
+        },
+        {
+          "step": "pack-check",
+          "actor": "bot",
+          "by": "Vendor Intake Bot",
+          "at": "2026-10-26T23:57:29Z",
+          "detail": "Pack complete; policy gaps flagged for approvers: subprocessors, breach-notice, residency, liability",
+          "label": "Research pack checked"
+        },
+        {
+          "step": "approval-manager",
+          "actor": "human",
+          "by": "Dan Ortiz",
+          "at": "2026-10-26T23:58:30Z",
+          "detail": "approved: Approved in chat",
+          "label": "Manager decision"
+        },
+        {
+          "step": "approval-security",
+          "actor": "human",
+          "by": "Sam Lee",
+          "at": "2026-10-26T23:59:45Z",
+          "detail": "approved: Approved in chat",
+          "label": "Security decision"
+        }
+      ],
+      "submitted_at": "2026-10-26T23:56:53Z",
+      "decided_at": "2026-10-26T23:59:45Z",
+      "updated_at": "2026-10-26T23:59:45Z"
     }
   ]
 }
