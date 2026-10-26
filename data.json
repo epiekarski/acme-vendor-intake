@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-14T13:02:53Z",
+  "generated_at": "2026-10-26T01:16:20Z",
   "required_fields": [
     "Legal name",
     "Website",
@@ -76,114 +76,6 @@
       "submitted_at": null,
       "decided_at": null,
       "updated_at": "2026-10-07T14:06:00Z"
-    },
-    {
-      "id": "quillbase",
-      "vendor": "Quillbase, Inc.",
-      "website": "https://quillbase.example",
-      "requester": "Marco Diaz",
-      "status": "pending_approval",
-      "status_label": "Awaiting approval",
-      "stage": 3,
-      "tier": "standard",
-      "tier_reason": "No rule matched; default tier 'standard'",
-      "approvers": [
-        {
-          "role": "manager",
-          "name": "Dan Ortiz",
-          "state": "waiting"
-        }
-      ],
-      "waiting_on": {
-        "role": "manager",
-        "name": "Dan Ortiz"
-      },
-      "due": "2026-10-09T08:06:00Z",
-      "overdue": true,
-      "blocker": {
-        "kind": "ops",
-        "text": "Flagged to Ops: approval overdue"
-      },
-      "fields": {
-        "Legal name": "Quillbase, Inc.",
-        "Website": "https://quillbase.example",
-        "Touches customer data": "No",
-        "Business owner": "Marco Diaz",
-        "Target start": "2026-10-26",
-        "Pilot length": "90 days",
-        "Requester": "Marco Diaz",
-        "Requester's manager": "Dan Ortiz",
-        "Source": "email from Marco Diaz"
-      },
-      "missing_fields": [],
-      "pack": {
-        "complete": true,
-        "checked_at": "2026-10-08T09:06:00Z",
-        "problems": [],
-        "policy_gaps": []
-      },
-      "approvals": [],
-      "log": [
-        {
-          "step": "intake",
-          "actor": "bot",
-          "by": "Vendor Intake Bot",
-          "at": "2026-10-08T08:06:00Z",
-          "detail": "Drafted request from email from Marco Diaz",
-          "label": "Request drafted"
-        },
-        {
-          "step": "intake-confirmed",
-          "actor": "human",
-          "by": "Marco Diaz",
-          "at": "2026-10-08T08:06:00Z",
-          "detail": "Requester confirmed the request",
-          "label": "Requester confirmed"
-        },
-        {
-          "step": "triage",
-          "actor": "bot",
-          "by": "Vendor Intake Bot",
-          "at": "2026-10-08T08:06:00Z",
-          "detail": "Tier standard via default; approvers manager",
-          "label": "Triage: route set"
-        },
-        {
-          "step": "pack-check",
-          "actor": "bot",
-          "by": "Vendor Intake Bot",
-          "at": "2026-10-08T09:06:00Z",
-          "detail": "Pack complete",
-          "label": "Research pack checked"
-        },
-        {
-          "step": "exception",
-          "actor": "bot",
-          "by": "Vendor Intake Bot",
-          "at": "2026-10-12T13:18:22Z",
-          "detail": "Flagged to Ops: approval overdue",
-          "label": "Flagged to Ops"
-        },
-        {
-          "step": "exception",
-          "actor": "bot",
-          "by": "Vendor Intake Bot",
-          "at": "2026-10-13T13:12:37Z",
-          "detail": "Flagged to Ops: approval overdue",
-          "label": "Flagged to Ops"
-        },
-        {
-          "step": "exception",
-          "actor": "bot",
-          "by": "Vendor Intake Bot",
-          "at": "2026-10-14T13:02:48Z",
-          "detail": "Flagged to Ops: approval overdue",
-          "label": "Flagged to Ops"
-        }
-      ],
-      "submitted_at": "2026-10-08T08:06:00Z",
-      "decided_at": null,
-      "updated_at": "2026-10-14T13:02:48Z"
     },
     {
       "id": "brightline-analytics",
@@ -302,6 +194,122 @@
       "submitted_at": "2026-10-09T14:33:47Z",
       "decided_at": null,
       "updated_at": "2026-10-14T13:02:53Z"
+    },
+    {
+      "id": "quillbase",
+      "vendor": "Quillbase, Inc.",
+      "website": "https://quillbase.example",
+      "requester": "Marco Diaz",
+      "status": "pending_approval",
+      "status_label": "Awaiting approval",
+      "stage": 3,
+      "tier": "standard",
+      "tier_reason": "No rule matched; default tier 'standard'",
+      "approvers": [
+        {
+          "role": "manager",
+          "name": "Dan Ortiz",
+          "state": "waiting"
+        }
+      ],
+      "waiting_on": {
+        "role": "manager",
+        "name": "Dan Ortiz"
+      },
+      "due": "2026-10-09T08:06:00Z",
+      "overdue": true,
+      "blocker": {
+        "kind": "ops",
+        "text": "Flagged to Ops: approval overdue"
+      },
+      "fields": {
+        "Legal name": "Quillbase, Inc.",
+        "Website": "https://quillbase.example",
+        "Touches customer data": "No",
+        "Business owner": "Marco Diaz",
+        "Target start": "2026-10-26",
+        "Pilot length": "90 days",
+        "Requester": "Marco Diaz",
+        "Requester's manager": "Dan Ortiz",
+        "Source": "email from Marco Diaz"
+      },
+      "missing_fields": [],
+      "pack": {
+        "complete": true,
+        "checked_at": "2026-10-08T09:06:00Z",
+        "problems": [],
+        "policy_gaps": []
+      },
+      "approvals": [],
+      "log": [
+        {
+          "step": "intake",
+          "actor": "bot",
+          "by": "Vendor Intake Bot",
+          "at": "2026-10-08T08:06:00Z",
+          "detail": "Drafted request from email from Marco Diaz",
+          "label": "Request drafted"
+        },
+        {
+          "step": "intake-confirmed",
+          "actor": "human",
+          "by": "Marco Diaz",
+          "at": "2026-10-08T08:06:00Z",
+          "detail": "Requester confirmed the request",
+          "label": "Requester confirmed"
+        },
+        {
+          "step": "triage",
+          "actor": "bot",
+          "by": "Vendor Intake Bot",
+          "at": "2026-10-08T08:06:00Z",
+          "detail": "Tier standard via default; approvers manager",
+          "label": "Triage: route set"
+        },
+        {
+          "step": "pack-check",
+          "actor": "bot",
+          "by": "Vendor Intake Bot",
+          "at": "2026-10-08T09:06:00Z",
+          "detail": "Pack complete",
+          "label": "Research pack checked"
+        },
+        {
+          "step": "exception",
+          "actor": "bot",
+          "by": "Vendor Intake Bot",
+          "at": "2026-10-12T13:18:22Z",
+          "detail": "Flagged to Ops: approval overdue",
+          "label": "Flagged to Ops"
+        },
+        {
+          "step": "exception",
+          "actor": "bot",
+          "by": "Vendor Intake Bot",
+          "at": "2026-10-13T13:12:37Z",
+          "detail": "Flagged to Ops: approval overdue",
+          "label": "Flagged to Ops"
+        },
+        {
+          "step": "exception",
+          "actor": "bot",
+          "by": "Vendor Intake Bot",
+          "at": "2026-10-14T13:02:48Z",
+          "detail": "Flagged to Ops: approval overdue",
+          "label": "Flagged to Ops"
+        },
+        {
+          "step": "exception",
+          "actor": "bot",
+          "by": "Vendor Intake Bot",
+          "at": "2026-10-26T01:16:20Z",
+          "detail": "Flagged to Ops: approval overdue",
+          "label": "Flagged to Ops"
+        }
+      ],
+      "submitted_at": "2026-10-08T08:06:00Z",
+      "decided_at": null,
+      "updated_at": "2026-10-26T01:16:20Z"
     },
     {
       "id": "harbor-signal",
