@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-26T01:46:22Z",
+  "generated_at": "2026-10-26T23:54:28Z",
   "required_fields": [
     "Legal name",
     "Website",
@@ -15,15 +15,15 @@
     "Done"
   ],
   "summary": {
-    "open": 2,
-    "waiting_on_person": 2,
+    "open": 3,
+    "waiting_on_person": 3,
     "overdue": 1,
-    "incomplete": 1,
+    "incomplete": 2,
     "approved": 1,
     "rejected": 0
   },
   "metrics": {
-    "requests": 3,
+    "requests": 4,
     "decided": 1,
     "median_cycle_hours": 24.0,
     "exception_rate": 0.0
@@ -102,7 +102,7 @@
       "overdue": true,
       "blocker": {
         "kind": "overdue",
-        "text": "Overdue 6h: waiting on Dan Ortiz"
+        "text": "Overdue 28h: waiting on Dan Ortiz"
       },
       "fields": {
         "Legal name": "Quillbase, Inc.",
@@ -160,6 +160,54 @@
       "submitted_at": "2026-10-24T19:46:22Z",
       "decided_at": null,
       "updated_at": "2026-10-24T20:46:22Z"
+    },
+    {
+      "id": "brightline-analytics",
+      "vendor": "Brightline Analytics, Inc.",
+      "website": "https://brightline-analytics.example",
+      "requester": "Priya Shah",
+      "status": "incomplete",
+      "status_label": "Incomplete",
+      "stage": 0,
+      "tier": null,
+      "tier_reason": null,
+      "approvers": [],
+      "waiting_on": null,
+      "due": null,
+      "overdue": false,
+      "blocker": {
+        "kind": "missing",
+        "text": "Missing: business owner"
+      },
+      "fields": {
+        "Legal name": "Brightline Analytics, Inc.",
+        "Website": "https://brightline-analytics.example",
+        "Touches customer data": "Yes",
+        "Business owner": null,
+        "Target start": "2026-10-19",
+        "Pilot length": "90 days",
+        "Requester": "Priya Shah",
+        "Requester's manager": "Dan Ortiz",
+        "Source": "email from Priya Shah on October 5"
+      },
+      "missing_fields": [
+        "Business owner"
+      ],
+      "pack": null,
+      "approvals": [],
+      "log": [
+        {
+          "step": "intake",
+          "actor": "bot",
+          "by": "Vendor Intake Bot",
+          "at": "2026-10-26T23:54:28Z",
+          "detail": "Drafted request from email from Priya Shah on October 5",
+          "label": "Request drafted"
+        }
+      ],
+      "submitted_at": null,
+      "decided_at": null,
+      "updated_at": "2026-10-26T23:54:28Z"
     },
     {
       "id": "harbor-signal",
