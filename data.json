@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-27T16:40:13Z",
+  "generated_at": "2026-10-27T16:40:50Z",
   "required_fields": [
     "Legal name",
     "Website",
@@ -177,23 +177,20 @@
       "overdue": false,
       "blocker": {
         "kind": "missing",
-        "text": "Missing: business owner, target start date"
+        "text": "Waiting for the requester to confirm"
       },
       "fields": {
         "Legal name": "Brightline Analytics, Inc.",
         "Website": "https://brightline-analytics.example",
         "Touches customer data": "Yes",
-        "Business owner": null,
-        "Target start": null,
+        "Business owner": "Priya Shah",
+        "Target start": "2026-11-04",
         "Pilot length": "90 days",
         "Requester": "Priya Shah",
         "Requester's manager": "Dan Ortiz",
         "Source": "email from Priya Shah on October 5"
       },
-      "missing_fields": [
-        "Business owner",
-        "Target start date"
-      ],
+      "missing_fields": [],
       "pack": null,
       "approvals": [],
       "log": [
@@ -204,11 +201,19 @@
           "at": "2026-10-27T16:40:13Z",
           "detail": "Drafted request from email from Priya Shah on October 5",
           "label": "Request drafted"
+        },
+        {
+          "step": "intake",
+          "actor": "bot",
+          "by": "Vendor Intake Bot",
+          "at": "2026-10-27T16:40:50Z",
+          "detail": "Updated fields: business_owner, target_start_date",
+          "label": "Request drafted"
         }
       ],
       "submitted_at": null,
       "decided_at": null,
-      "updated_at": "2026-10-27T16:40:13Z"
+      "updated_at": "2026-10-27T16:40:50Z"
     },
     {
       "id": "harbor-signal",
