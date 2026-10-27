@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-27T16:40:50Z",
+  "generated_at": "2026-10-27T16:41:00Z",
   "required_fields": [
     "Legal name",
     "Website",
@@ -16,9 +16,9 @@
   ],
   "summary": {
     "open": 3,
-    "waiting_on_person": 3,
+    "waiting_on_person": 2,
     "overdue": 1,
-    "incomplete": 2,
+    "incomplete": 1,
     "approved": 1,
     "rejected": 0
   },
@@ -166,19 +166,16 @@
       "vendor": "Brightline Analytics, Inc.",
       "website": "https://brightline-analytics.example",
       "requester": "Priya Shah",
-      "status": "incomplete",
-      "status_label": "Incomplete",
-      "stage": 0,
+      "status": "submitted",
+      "status_label": "Submitted",
+      "stage": 1,
       "tier": null,
       "tier_reason": null,
       "approvers": [],
       "waiting_on": null,
       "due": null,
       "overdue": false,
-      "blocker": {
-        "kind": "missing",
-        "text": "Waiting for the requester to confirm"
-      },
+      "blocker": null,
       "fields": {
         "Legal name": "Brightline Analytics, Inc.",
         "Website": "https://brightline-analytics.example",
@@ -209,11 +206,27 @@
           "at": "2026-10-27T16:40:50Z",
           "detail": "Updated fields: business_owner, target_start_date",
           "label": "Request drafted"
+        },
+        {
+          "step": "intake",
+          "actor": "bot",
+          "by": "Vendor Intake Bot",
+          "at": "2026-10-27T16:41:00Z",
+          "detail": "Updated fields: ",
+          "label": "Request drafted"
+        },
+        {
+          "step": "intake-confirmed",
+          "actor": "human",
+          "by": "Priya Shah",
+          "at": "2026-10-27T16:41:00Z",
+          "detail": "Requester confirmed the request",
+          "label": "Requester confirmed"
         }
       ],
-      "submitted_at": null,
+      "submitted_at": "2026-10-27T16:41:00Z",
       "decided_at": null,
-      "updated_at": "2026-10-27T16:40:50Z"
+      "updated_at": "2026-10-27T16:41:00Z"
     },
     {
       "id": "harbor-signal",
