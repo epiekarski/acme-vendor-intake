@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-03T14:11:43Z",
+  "generated_at": "2026-11-04T14:05:20Z",
   "required_fields": [
     "Legal name",
     "Website",
@@ -179,11 +179,19 @@
           "at": "2026-11-03T14:11:43Z",
           "detail": "Flagged to Ops: approval overdue",
           "label": "Flagged to Ops"
+        },
+        {
+          "step": "exception",
+          "actor": "bot",
+          "by": "Vendor Intake Bot",
+          "at": "2026-11-04T14:05:20Z",
+          "detail": "Flagged to Ops: approval overdue",
+          "label": "Flagged to Ops"
         }
       ],
       "submitted_at": "2026-10-26T10:44:06Z",
       "decided_at": null,
-      "updated_at": "2026-11-03T14:11:43Z"
+      "updated_at": "2026-11-04T14:05:20Z"
     },
     {
       "id": "harbor-signal",
